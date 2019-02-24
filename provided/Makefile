@@ -4,9 +4,12 @@ CXXFLAGS	= -std=c++11 -Wall
 all: shop
 
 clean:
-	rm shop Store.o Item.o TextUI.o
+	rm test Store.o Item.o TextUI.o
 
 # update to include a test target when you have a test.cpp
+
+test: Store.o TextUI.o Item.o test.cpp
+	$(CXX) $(CXXFLAGS) test.cpp Store.o TextUI.o Item.o -o test
 
 shop: main.cpp Store.o Item.o TextUI.o
 	$(CXX) $(CXXFLAGS) main.cpp Store.o Item.o TextUI.o -o shop
